@@ -12,9 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get(config('filemanager-config.url','filemanager'), 'Semkeamsan\LaravelFilemanager\FilemanagerController@index');
+Route::get(env('FILEMANAGER_URL','filemanager'), 'Semkeamsan\LaravelFilemanager\FilemanagerController@index');
+Route::get(env('FILEMANAGER_URL','filemanager').'/demo', 'Semkeamsan\LaravelFilemanager\FilemanagerController@demo');
 Route::prefix('api')->group(function () {
-    Route::prefix(config('filemanager-config.url','filemanager'))->group(function () {
+    Route::prefix(env('FILEMANAGER_URL','filemanager'))->group(function () {
         Route::get('/', 'Semkeamsan\LaravelFilemanager\FilemanagerController@all');
         Route::post('/', 'Semkeamsan\LaravelFilemanager\FilemanagerController@store');
         Route::post('/upload', 'Semkeamsan\LaravelFilemanager\FilemanagerController@upload');

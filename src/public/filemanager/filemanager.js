@@ -766,9 +766,9 @@ Filemanager.prototype = {
                 self.information(data);
                 self.options.callback(data);
                 return false;
-            }).dblclick(e=>{
+            }).dblclick(e => {
                 var data = $el.data('fm');
-                if(data.type == 'folder'){
+                if (data.type == 'folder') {
                     self.$left.find(`[fm_id="${data.id}"]`).find('a:first').click();
                 }
 
@@ -1126,6 +1126,19 @@ $.fn.filemanager = function (opts) {
     var options = {
         callback: data => {
             $modal.find('.modal-footer #submit').removeClass('disabled');
+        },
+        template: data => {
+            //multiple
+            var $t = $(`<div class="border m-1" style="width:120px;height:120px;float:left;position: relative;">
+                <i id="del" class="fa fa-times fa-z position-absolute text-danger p-1" style=" z-index: 1; right: 0;"></i>
+                <input type="hidden" class="form-control" name="${options.input_name}" value="${data.path}">
+                <img width="100%" height="100%" src="${data.path}" style="object-fit: contain">
+                </div>`);
+            $t.find('#del').click(() => {
+                $t.remove();
+            });
+            var target = $(this).data('target');
+            $(target).append($t);
         }
     }
     $.extend(options, opts);
@@ -1145,18 +1158,7 @@ $.fn.filemanager = function (opts) {
                 $(image).attr('src', `${data.path}`);
             }
 
-            //multiple
-            var $t = $(`<div class="border m-1" style="width:120px;height:120px;float:left;">
-                    <i class="fa fa-times" style="position: relative;float:right"></i>
-                    <input type="hidden" class="form-control" name="${options.input_name}" value="${data.path}">
-                    <img width="100%" height="100%" src="${data.path}" style="object-fit: contain">
-                </div>`);
-            $t.find('i').click(() => {
-                $t.remove();
-            });
-            var target = $(this).data('target');
-            $(target).append($t);
-
+            options.template(data);
 
         });
         filemanager.items_selected = {};

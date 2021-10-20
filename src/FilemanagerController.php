@@ -24,6 +24,10 @@ class FilemanagerController extends Controller
     {
         return view('semkeamsan/laravel-filemanager::index');
     }
+    public function demo()
+    {
+        return view('semkeamsan/laravel-filemanager::demo');
+    }
     public function all()
     {
         return Filemanager::withCount(['files'])->with(['parent'])->whereNull('parent_id')->where(function ($table) {
