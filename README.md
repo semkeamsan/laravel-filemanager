@@ -6,8 +6,10 @@
     -   php artisan vendor:publish --tag=semkeamsan/laravel-filemanager-view
     -   php artisan migrate
     -   php artisan storage:link
-    -   php artisan serve 
-    
+    -   php artisan serve
+
+-   Edit env
+    - FILEMANAGER_URL=filemanager
 - http://127.0.0.1:8000/filemanager
 - http://127.0.0.1:8000/filemanager/demo
     
