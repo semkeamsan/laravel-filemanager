@@ -8,6 +8,6 @@
     -   php artisan storage:link
     -   php artisan serve 
     
-    http://127.0.0.1:8000/filemanager
-    http://127.0.0.1:8000/filemanager/demo
+- http://127.0.0.1:8000/filemanager
+- http://127.0.0.1:8000/filemanager/demo
     
