@@ -65,17 +65,17 @@ Filemanager.prototype = {
             <div class="fm_tree-folder ${ active == data.id ? 'fm_tree-folder--focused fm_tree-folder--selected' : null }">
                 ${data.id == active|| data.children.find(o => o.id === active) ? `
                 <div class="pl-1" fm_id="show_folder">
-                    <i class="${ data.children.length ? null : 'invisible' } fa fa-sort-up"></i>
+                    <i class="${ data.children.length ? null : 'invisible' } fas fa-sort-up"></i>
                 </div>
                 ` : `
                 <div class="pl-1" fm_id="show_folder">
-                    <i class="${ data.children.length ? null : 'invisible' } fa fa-sort-down"></i>
+                    <i class="${ data.children.length ? null : 'invisible' } fas fa-sort-down"></i>
                 </div>
                 `}
                 <div class="fm_tree-list-item__content">
                     <a class="d-flex" href="/${this.options.url}${data.id ? `/folder/${data.id}` : '' }">
                         <i
-                            class="fa ${ data.id == active || data.children.find(o => o.id === active) ? 'fa-folder-open' : 'fa-folder' }"></i>
+                            class="fas ${ data.id == active || data.children.find(o => o.id === active) ? 'fa-folder-open' : 'fa-folder' }"></i>
                         <span class="fm_tree-list-item__text">${data.name}</span>
                     </a>
                 </div>
@@ -88,7 +88,7 @@ Filemanager.prototype = {
         return $folder;
     },
     breadcrumb: function (data) {
-        var $li = $(`<li class="breadcrumb-item"><a href="/${this.options.url}"><i class="fa fa-home"></i></a></li>`);
+        var $li = $(`<li class="breadcrumb-item"><a href="/${this.options.url}"><i class="fas fa-home"></i></a></li>`);
         $li.click((e) => {
             e.preventDefault();
             this.$left.find(`li[fm_id]:first a:first`).trigger('click');
@@ -136,7 +136,7 @@ Filemanager.prototype = {
                         <div aria-label="tab-content-topSection" class="fm_addingForm">
                             <div class="fm_widget fm_layout fm_layout-rows fm_form">
                                 <button class="btn btn-primary btn-block" fm_id="add_button">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <i class="fas fa-plus" aria-hidden="true"></i>
                                     ${Filemanager.prototype.languages.add}
                                 </button>
                             </div>
@@ -203,7 +203,7 @@ Filemanager.prototype = {
                             <ol class="breadcrumb breadcrumb-links breadcrumb-light">
                                 <li class="breadcrumb-item">
                                     <a href="/filemanager">
-                                        <i class="fa fa-home"></i>
+                                        <i class="fas fa-home"></i>
                                     </a>
                                 </li>
                             </ol>
@@ -213,7 +213,7 @@ Filemanager.prototype = {
                         <div class="input-group input-group-merge ">
                             <input fm_id="filter" class="form-control rounded-0" placeholder=" ${Filemanager.prototype.languages.search}" type="text">
                             <div class="input-group-append">
-                                <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
                             </div>
                         </div>
                     </div>
@@ -221,13 +221,13 @@ Filemanager.prototype = {
                 <div class="form-row  d-none">
                     <div class="col-auto">
                         <button class="btn btn-primary">
-                            <i class="fa fa-th-large"></i>
+                            <i class="fas fa-th-large"></i>
                         </button>
                         <button class="btn btn-primary">
-                            <i class="fa fa-bars"></i>
+                            <i class="fas fa-bars"></i>
                         </button>
                         <button class="btn btn-primary">
-                            <i class="fa fa-sort-amount-up-alt"></i>
+                            <i class="fas fa-sort-amount-up-alt"></i>
                         </button>
                     </div>
                 </div>
@@ -392,7 +392,7 @@ Filemanager.prototype = {
                         <button class="fm_button fm_menu-button" fm_id="add_folder" type="button"
                             role="menuitem" aria-disabled="false">
                             <span class="fm_menu-button__block fm_menu-button__block--left">
-                                <i class="fa fa-folder-plus text-gray pr-2"></i>
+                                <i class="fas fa-folder-plus text-gray pr-2"></i>
                                 <span class="fm_menu-button__text">${Filemanager.prototype.languages.add_folder}</span>
                             </span>
                         </button>
@@ -401,7 +401,7 @@ Filemanager.prototype = {
                         <button class="fm_button fm_menu-button" fm_id="add_file" type="button"
                             role="menuitem" aria-disabled="false">
                             <span class="fm_menu-button__block fm_menu-button__block--left">
-                                <i class="fa fa-file text-gray pr-2"></i>
+                                <i class="fas fa-file text-gray pr-2"></i>
                                 <span class="fm_menu-button__text">${Filemanager.prototype.languages.add_file}</span>
                             </span>
                         </button>
@@ -410,7 +410,7 @@ Filemanager.prototype = {
                         <button class="fm_button fm_menu-button" fm_id="add_upload" type="button"
                             role="menuitem" aria-disabled="false">
                             <span class="fm_menu-button__block fm_menu-button__block--left">
-                                <i class="fa fa-upload text-gray pr-2"></i>
+                                <i class="fas fa-upload text-gray pr-2"></i>
                                 <span class="fm_menu-button__text">${Filemanager.prototype.languages.upload_files}</span>
                             </span>
                         </button>
@@ -612,7 +612,7 @@ Filemanager.prototype = {
                     mime: file.type
                 };
                 self.files[file.name] = data;
-                var $btndel = $(`<i class="fa fa-times fa-z position-absolute text-danger p-1" style=" z-index: 1; right: 0;"></i>`);
+                var $btndel = $(`<i class="fas fa-times fa-z position-absolute text-danger p-1" style=" z-index: 1; right: 0;"></i>`);
                 var $item = $(`<div class="fm_dataview-item fm_dataview-item--with-gap position-relative" fm_id="">
                     <div class="fm_dataview-item__inner-html">
                         <div class="fm_card_image-wrapper">
@@ -745,12 +745,12 @@ Filemanager.prototype = {
                 $el.find('>.fm_tree-folder').addClass('fm_tree-folder--focused fm_tree-folder--selected');
 
                 if ($el.find(`[fm_id="show_folder"]:first>i`).hasClass('invisible')) {
-                    $el.find(`[fm_id="show_folder"]:first>i`).removeClass().addClass('fa fa-sort-up invisible');
+                    $el.find(`[fm_id="show_folder"]:first>i`).removeClass().addClass('fas fa-sort-up invisible');
                 } else {
-                    $el.find(`[fm_id="show_folder"]:first>i`).removeClass().addClass('fa fa-sort-up');
+                    $el.find(`[fm_id="show_folder"]:first>i`).removeClass().addClass('fas fa-sort-up');
                 }
 
-                $el.find(`.fm_tree-list-item__content:first i`).removeClass().addClass('fa fa-folder-open');
+                $el.find(`.fm_tree-list-item__content:first i`).removeClass().addClass('fas fa-folder-open');
 
 
                 self.breadcrumb(data);
@@ -789,7 +789,7 @@ Filemanager.prototype = {
                                 <button class="fm_button fm_menu-button" fm_id="add_file" type="button" role="menuitem"
                                     aria-disabled="false">
                                     <span class="fm_menu-button__block fm_menu-button__block--left">
-                                        <i class="fa fa-file text-gray pr-2"></i>
+                                        <i class="fas fa-file text-gray pr-2"></i>
                                         <span class="fm_menu-button__text">${Filemanager.prototype.languages.add_file}</span>
                                     </span>
                                 </button>
@@ -798,7 +798,7 @@ Filemanager.prototype = {
                                 <button class="fm_button fm_menu-button" fm_id="add_folder" type="button" role="menuitem"
                                     aria-disabled="false">
                                     <span class="fm_menu-button__block fm_menu-button__block--left">
-                                      <i class="fa fa-folder-plus text-gray pr-2"></i>
+                                      <i class="fas fa-folder-plus text-gray pr-2"></i>
                                         <span class="fm_menu-button__text">${Filemanager.prototype.languages.add_folder}</span>
                                     </span>
                                 </button>
@@ -807,7 +807,7 @@ Filemanager.prototype = {
                                 <button class="fm_button fm_menu-button" fm_id="rename" type="button" role="menuitem"
                                     aria-disabled="false">
                                     <span class="fm_menu-button__block fm_menu-button__block--left">
-                                         <i class="fa fa-edit text-gray pr-2"></i>
+                                         <i class="fas fa-edit text-gray pr-2"></i>
                                         <span class="fm_menu-button__text">${Filemanager.prototype.languages.rename}</span>
                                     </span>
                                 </button>
@@ -816,7 +816,7 @@ Filemanager.prototype = {
                                 <button class="fm_button fm_menu-button" fm_id="delete" type="button" role="menuitem"
                                     aria-disabled="false">
                                     <span class="fm_menu-button__block fm_menu-button__block--left">
-                                        <i class="fa fa-trash text-gray pr-2"></i>
+                                        <i class="fas fa-trash text-gray pr-2"></i>
                                         <span class="fm_menu-button__text">${Filemanager.prototype.languages.delete}</span>
                                     </span>
                                     <span class="fm_menu-button__block fm_menu-button__block--right">
@@ -1130,7 +1130,7 @@ $.fn.filemanager = function (opts) {
         template: data => {
             //multiple
             var $t = $(`<div class="border m-1" style="width:120px;height:120px;float:left;position: relative;">
-                <i id="del" class="fa fa-times fa-z position-absolute text-danger p-1" style=" z-index: 1; right: 0;"></i>
+                <i id="del" class="fas fa-times fa-z position-absolute text-danger p-1" style=" z-index: 1; right: 0;"></i>
                 <input type="hidden" class="form-control" name="${options.input_name}" value="${data.path}">
                 <img width="100%" height="100%" src="${data.path}" style="object-fit: contain">
                 </div>`);

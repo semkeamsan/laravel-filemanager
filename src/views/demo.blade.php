@@ -68,20 +68,20 @@
     <script>
         var _token = $('meta[name="csrf-token"]').attr("content");
         $(`#one`).filemanager({
-            url: 'filemanager',
+            url: `{{ env('FILEMANAGER_URL','filemanager') }}`,
             _token: _token,
             multiple: false,
         });
 
         $(`#multiple`).filemanager({
-            url: 'filemanager',
+            url: `{{ env('FILEMANAGER_URL','filemanager') }}`,
             _token: _token,
             multiple: true,
             input_name: 'images[]',
 
         });
         $(`#custom`).filemanager({
-            url: 'filemanager',
+            url: `{{ env('FILEMANAGER_URL','filemanager') }}`,
             _token: _token,
             multiple: true,
             query: {

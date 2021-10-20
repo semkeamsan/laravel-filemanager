@@ -34,7 +34,7 @@
     <script>
         var _token = $('meta[name="csrf-token"]').attr("content");
         var filemanager = new Filemanager($(`#filemanager`), {
-            url: 'filemanager',
+            url: `{{ env('FILEMANAGER_URL','filemanager') }}`,
             _token: _token,
         });
         filemanager.init();
