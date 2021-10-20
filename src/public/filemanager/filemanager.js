@@ -12,6 +12,7 @@ let Filemanager = function ($el, options) {
     this.active_folder = '';
     this.multiple_select = false;
     this.items_selected = {};
+    this.files = {};
 }
 
 Filemanager.prototype = {
@@ -164,6 +165,38 @@ Filemanager.prototype = {
 
 
         this.$main = $(`<div fm_id="main" class="${this.options.hide_information? 'col-xl-8' : 'col-xl-10'} border">
+                <div class="row align-items-center no-gutters d-none py-2" fm_id="upload">
+                    <div tabindex="1" role="dialog" aria-modal="true" class="fm_widget w-100">
+                    <div aria-label="tab-content-" class="fm_widget fm_layout fm_layout-rows fm_window fm_window--modal">
+                        <div aria-label="tab-content-content" class="fm_window-content-without-header p-0">
+                            <div class="fm_widget fm_layout fm_layout-rows fm_form">
+                                <div class="fm_form-element p-2 border-bottom">
+                                    <h5>${Filemanager.prototype.languages.upload_files}</h5>
+                                </div>
+
+                                <div class="fm_form-element scroll-upload p-2" style="min-height: 130px;max-height: 540px;height:100%;overflow-y: auto">
+
+                                </div>
+
+                                <div class="fm_layout-columns fm_layout-columns--around fm_window__buttons border-top py-2">
+                                    <div aria-label="tab-content-cancel" class="fm_form-element">
+                                        <button id="" fm_id="cancel" type="button"
+                                            class="fm_button fm_button--color_primary fm_button--size_medium fm_button--view_link">
+                                            <span class="fm_button__text">${Filemanager.prototype.languages.cancel}</span>
+                                        </button>
+                                    </div>
+                                    <div aria-label="tab-content-apply" class="fm_form-element">
+                                        <button id="" fm_id="apply" type="button"
+                                            class="fm_button fm_button--color_primary fm_button--size_medium fm_button--view_flat">
+                                            <span class="fm_button__text">${Filemanager.prototype.languages.upload}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
                 <div class="row align-items-center no-gutters  py-2">
                     <div class="col-xl-9">
                         <nav aria-label="breadcrumb" class="p-2 border">
@@ -203,6 +236,7 @@ Filemanager.prototype = {
                 </div>
             </div>`);
         this.events.filter(this, this.$main.find(`[fm_id="filter"]`));
+        this.events.add_upload(this, this.$main.find(`.scroll-upload`));
         this.$main.find('.scroll-view').css({
             overflowY: 'auto',
             height: 450
@@ -218,7 +252,7 @@ Filemanager.prototype = {
                 <div class="fm_card_image-wrapper">
                     <div class="fm_card_image-sizer">
                         ${data.type == 'folder' ? `<div class="fm_grid-card__bg-icon fm_file-icon fm_file-icon--folder"></div>` :
-                        data.extension == 'image' ? `<img draggable="false" class="fm_card_image" src="/storage/${data.path}">` :
+                        data.extension == 'image' ? `<img draggable="false" class="fm_card_image" src="${data.path}">` :
                             `<div class="fm_grid-card__bg-icon fm_file-icon fm_file-icon--${data.extension}"></div>`
                         }
 
@@ -270,7 +304,7 @@ Filemanager.prototype = {
     },
     information: function (data) {
         if (data.extension == 'image') {
-            this.$right.find(`.fm_layout-cell-content`).html(`<img draggable="false" class="fm_tabbar__image" src="/storage/${data.path}">`);
+            this.$right.find(`.fm_layout-cell-content`).html(`<img draggable="false" class="fm_tabbar__image" src=" ${data.path}">`);
         } else {
             this.$right.find(`.fm_layout-cell-content`).html(`<div class="fm_tabbar__bg-icon fm_file-icon fm_file-icon--${data.extension}"></div>`);
         }
@@ -278,7 +312,7 @@ Filemanager.prototype = {
         this.$right.find(`.fm_layout-cell-content`).append(`
                     <div aria-label="tab-content-information" class="fm_layout-cell">
                         <div class="fm_widget fm_layout fm_layout-rows fm_tabbar__form fm_form">
-                            <div aria-label="tab-content-name" class="fm_form-element">
+                            <div class="fm_form-element">
                                 <div class="fm_form-group fm_form-group--textinput  fm_form-group--inline ">
                                 <label class="fm_label" style="width: 90px; max-width: 100%;"> ${Filemanager.prototype.languages.name}</label>
                                 <div class="fm_input__wrapper">
@@ -288,7 +322,7 @@ Filemanager.prototype = {
                         </div>
                         <div aria-label="tab-content-size" class="fm_form-element">
                         <div class="fm_form-group fm_form-group--textinput  fm_form-group--inline ">
-                            <label class="fm_label" style="width: 90px; max-width: 100%;"> ${Filemanager.prototype.languages.search}</label>
+                            <label class="fm_label" style="width: 90px; max-width: 100%;"> ${Filemanager.prototype.languages.size}</label>
                             <div class="fm_input__wrapper">
                                 <input type="text" readonly="" fm_id="size" name="size" value="${ this.helpers.formatSizeUnits(data.size)}" aria-label="Size" class="fm_input fm_input--textinput">
                             </div>
@@ -321,37 +355,6 @@ Filemanager.prototype = {
                 </div>
             </div>`);
     },
-    template_upload: function () {
-
-        var $t = $(` <div tabindex="1" role="dialog" aria-modal="true" class="fm_popup fm_widget fm_popup--window_modal"
-                style="position: fixed; width: 840px; ">
-                <div aria-label="tab-content-" class="fm_widget fm_layout fm_layout-rows fm_window fm_window--modal">
-                    <div aria-label="tab-content-content" class="fm_window-content-without-header">
-                        <div class="fm_widget fm_layout fm_layout-rows fm_form">
-                            <div aria-label="tab-content-name" class="fm_form-element"  style="height: 540px;overflow-y: auto">
-
-                            </div>
-                            <div aria-label="tab-content" class="fm_form-element my-2"><div></div></div>
-                            <div class="fm_layout-columns fm_layout-columns--around fm_window__buttons">
-                                <div aria-label="tab-content-cancel" class="fm_form-element">
-                                    <button id="" fm_id="cancel" type="button"
-                                        class="fm_button fm_button--color_primary fm_button--size_medium fm_button--view_link">
-                                        <span class="fm_button__text">${Filemanager.prototype.languages.cancel}</span>
-                                    </button>
-                                </div>
-                                <div aria-label="tab-content-apply" class="fm_form-element">
-                                    <button id="" fm_id="apply" type="button"
-                                        class="fm_button fm_button--color_primary fm_button--size_medium fm_button--view_flat">
-                                        <span class="fm_button__text">${Filemanager.prototype.languages.upload}</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>`);
-        return $t;
-    },
 
     events: {
         a: function (self) {
@@ -369,6 +372,13 @@ Filemanager.prototype = {
 
             }).keyup(e => {
                 self.multiple_select = e.ctrlKey;
+            });
+
+
+            self.$main.find(`[fm_id="upload"]`).find(`[fm_id="cancel"]`).click(e => {
+                self.files = {};
+                self.$main.find(`[fm_id="upload"]`).find(`.scroll-upload`).html('');
+                self.$main.find(`[fm_id="upload"]`).addClass('d-none');
             });
 
         },
@@ -422,7 +432,7 @@ Filemanager.prototype = {
                 <div aria-label="tab-content-" class="fm_widget fm_layout fm_layout-rows fm_window fm_window--modal">
                     <div aria-label="tab-content-content" class="fm_window-content-without-header">
                         <div class="fm_widget fm_layout fm_layout-rows fm_form">
-                            <div aria-label="tab-content-name" class="fm_form-element">
+                            <div class="fm_form-element">
                                 <div class="fm_form-group ">
                                     <label for=""
                                         class="fm_label">${Filemanager.prototype.languages.add_new_folder_to_current_folder}</label>
@@ -511,7 +521,7 @@ Filemanager.prototype = {
                 <div aria-label="tab-content-" class="fm_widget fm_layout fm_layout-rows fm_window fm_window--modal">
                     <div aria-label="tab-content-content" class="fm_window-content-without-header">
                         <div class="fm_widget fm_layout fm_layout-rows fm_form">
-                            <div aria-label="tab-content-name" class="fm_form-element">
+                            <div class="fm_form-element">
                                 <div class="fm_form-group ">
                                     <label for=""
                                         class="fm_label">${Filemanager.prototype.languages.add_new_file_to_current_folder}</label>
@@ -587,85 +597,125 @@ Filemanager.prototype = {
                 self.events.resize(self);
             });
         },
-        add_upload: function (self, $el) {
-            var $t = self.template_upload();
-            $el.click(() => {
-                var $overlay = $(`<div class="fm_window__overlay"></div>`);
-                $overlay.click(e => {
-                    $overlay.remove();
-                    $t.remove();
+        files: function (self, files) {
+            $.each(files, (i, file) => {
+                var $ajax;
+                if (self.files[file.name]) {
+                    return;
+                }
+                var ext = self.helpers.types(file.name.split('.').pop());
+                var data = {
+                    name: file.name,
+                    path: URL.createObjectURL(file),
+                    extension: ext,
+                    size: file.size,
+                    mime: file.type
+                };
+                self.files[file.name] = data;
+                var $btndel = $(`<i class="fa fa-times fa-z position-absolute text-danger p-1" style=" z-index: 1; right: 0;"></i>`);
+                var $item = $(`<div class="fm_dataview-item fm_dataview-item--with-gap position-relative" fm_id="">
+                    <div class="fm_dataview-item__inner-html">
+                        <div class="fm_card_image-wrapper">
+                            <div class="fm_card_image-sizer">
+                                ${ ext == 'image' ? `<img draggable="false" class="fm_card_image" src="${URL.createObjectURL(file)}">` :
+                                    `<div class="fm_grid-card__bg-icon fm_file-icon fm_file-icon--${ext}"></div>`
+                                }
+
+                            </div>
+                        </div>
+                        <div class="fm_grid-card__caption text-truncate">
+                            ${file.name}
+                        </div>
+                    </div>
+                </div>`);
+                $item.prepend($btndel);
+                $btndel.click(e => {
+                    delete self.files[file.name];
+                    $item.remove();
+                    if ($ajax) {
+                        $ajax.abort();
+                    }
+                    if (Object.values(self.files).length == 0) {
+                        self.$main.find(`[fm_id="upload"]`).find(`[fm_id="cancel"]`).click();
+                        self.refresh();
+                    }
+                    return false;
+                });
+                $item.data('fm', data);
+                self.$main.find(`[fm_id="upload"]`).find(`.scroll-upload`).append($item);
+                self.events.select(self, $item);
+
+                var formData = new FormData();
+                formData.append('_token', self.options._token);
+                formData.append('file', file);
+                $ajax = $.ajax({
+                    url: `/api/${self.options.url}/temp/upload`,
+                    method: 'POST',
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    success: (res) => {
+                        if (res) {
+
+                        }
+                    },
                 });
 
-                self.$0.append($overlay);
-                self.$0.append($t);
-                self.events.resize(self);
+            });
+            if (Object.values(self.files).length) {
+                self.$main.find(`[fm_id="upload"]`).find(`[fm_id="apply"]`).unbind().click(e => {
 
-
-                var $form = $(`<form enctype="multipart/form-data">`);
-                var $input = $(`<input type="file" name="files[]" multiple style="display:none">`).appendTo($form);
-                $input.on('input', function (e) {
-                    var formData = new FormData($form[0]);
+                    var formData = new FormData();
                     formData.append('parent_id', self.active_folder);
                     formData.append('type', 'file');
                     formData.append('_token', self.options._token);
+                    $.each(Object.values(self.files), (i, file) => {
+                        formData.append(`allfiles[${i}][name]`, file.name);
+                        formData.append(`allfiles[${i}][size]`, file.size);
+                        formData.append(`allfiles[${i}][extension]`, file.extension);
+                        formData.append(`allfiles[${i}][mime]`, file.mime);
+                    });
 
                     $.ajax({
-                        url: `/api/${self.options.url}/upload`,
+                        url: `/api/${self.options.url}/temp/store`,
                         method: 'POST',
                         processData: false,
                         contentType: false,
                         data: formData,
                         success: (res) => {
-                            if (res) {
-                                $.each(res, (i, f) => {
-                                    self.$main.find(`.scroll-view`).prepend(self.item(f));
-                                });
-
-                            }
+                            self.$main.find(`[fm_id="upload"]`).find(`[fm_id="cancel"]`).click();
+                            self.refresh();
                         },
                     });
 
-
                 });
-                self.$0.append($form);
+            }
+
+        },
+        add_upload: function (self, $el) {
+            $el.click(() => {
+                var $input = $(`<input type="file" multiple style="display:none">`);
+
+                $input.on('input', (e) => {
+                    self.$main.find(`[fm_id="upload"]`).removeClass('d-none');
+                    this.files(self, e.target.files);
+                });
+                self.$0.append($input);
                 $input.trigger('click');
             });
         },
         drop: function (self) {
             self.$0
-                .on('dragover', function (e) {
+                .on('dragover', (e) => {
                     e.preventDefault();
+                    self.$main.find(`[fm_id="upload"]`).removeClass('d-none');
                 })
-                .on('drop', function (e) {
-                    var files = e.originalEvent.dataTransfer.files;
-                    var formData = new FormData();
-                    for (var i = 0; i < files.length; i++) {
-                        formData.append('files[' + i + ']', files[i]);
-                    }
-                    formData.append('parent_id', self.active_folder);
-                    formData.append('type', 'file');
-                    formData.append('_token', self.options._token);
-
-                    $.ajax({
-                        url: `/api/${self.options.url}/upload`,
-                        method: 'POST',
-                        processData: false,
-                        contentType: false,
-                        data: formData,
-                        success: (res) => {
-                            if (res) {
-                                $.each(res, (i, f) => {
-                                    self.$main.find(`.scroll-view`).prepend(self.item(f));
-                                });
-                            }
-                        },
-                    });
-
-
+                .on('drop', (e) => {
+                    this.files(self, e.originalEvent.dataTransfer.files);
                     e.preventDefault();
                     return false;
                 })
-                .on('dragleave', function (e) {
+                .on('dragleave', (e) => {
 
                 });
         },
@@ -716,6 +766,7 @@ Filemanager.prototype = {
                 self.selected(data, $el, e);
                 self.information(data);
                 self.options.callback(data);
+                return false;
             });
         },
         contextmenu: function (self, $el) {
@@ -807,7 +858,7 @@ Filemanager.prototype = {
                     <div aria-label="tab-content-" class="fm_widget fm_layout fm_layout-rows fm_window fm_window--modal" >
                         <div aria-label="tab-content-content" class="fm_window-content-without-header" >
                             <div class="fm_widget fm_layout fm_layout-rows fm_form" >
-                                <div aria-label="tab-content-name" class="fm_form-element">
+                                <div class="fm_form-element">
                                     <div class="fm_form-group ">
                                         <label for="" class="fm_label">Rename "${data.name}" ${data.type == 'file' ? Filemanager.prototype.languages.file : Filemanager.prototype.languages.folder }</label>
                                         <div class="fm_input__wrapper">
@@ -1085,14 +1136,14 @@ $.fn.filemanager = function (opts) {
             $(input).val(data.path);
 
             if (data.extension == 'image') {
-                $(image).attr('src', `/storage/${data.path}`);
+                $(image).attr('src', `${data.path}`);
             }
 
             //multiple
             var $t = $(`<div class="border m-1" style="width:120px;height:120px;float:left;">
                     <i class="fa fa-times" style="position: relative;float:right"></i>
                     <input type="hidden" class="form-control" name="${options.input_name}" value="${data.path}">
-                    <img width="100%" height="100%" src="/storage/${data.path}" style="object-fit: contain">
+                    <img width="100%" height="100%" src="${data.path}" style="object-fit: contain">
                 </div>`);
             $t.find('i').click(() => {
                 $t.remove();
