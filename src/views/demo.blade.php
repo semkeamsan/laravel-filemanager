@@ -27,7 +27,7 @@
             </div>
             <div class="col">
                 <input class="form-control" id="input">
-                <img class="border" width="350px" height="350px" src="" id="img" style="object-fit: contain">
+                <img class="border" width="150px" height="150px" src="" id="img" style="object-fit: contain">
             </div>
         </div>
         <div class="row my-3">
@@ -56,7 +56,16 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <h2 class="mt-4">CKEditor</h2>
+                <textarea name="ce" class="form-control"></textarea>
+            </div>
+        </div>
     </div>
+
+
+
     <script src="{{ asset('vendor/semkeamsan/laravel-filemanager/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/semkeamsan/laravel-filemanager/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor/semkeamsan/laravel-filemanager/filemanager/filemanager.js') }}"></script>
@@ -68,20 +77,20 @@
     <script>
         var _token = $('meta[name="csrf-token"]').attr("content");
         $(`#one`).filemanager({
-            url: `{{ env('FILEMANAGER_URL','filemanager') }}`,
+            url: `{{ env('FILEMANAGER_URL', 'filemanager') }}`,
             _token: _token,
             multiple: false,
         });
 
         $(`#multiple`).filemanager({
-            url: `{{ env('FILEMANAGER_URL','filemanager') }}`,
+            url: `{{ env('FILEMANAGER_URL', 'filemanager') }}`,
             _token: _token,
             multiple: true,
             input_name: 'images[]',
 
         });
         $(`#custom`).filemanager({
-            url: `{{ env('FILEMANAGER_URL','filemanager') }}`,
+            url: `{{ env('FILEMANAGER_URL', 'filemanager') }}`,
             _token: _token,
             multiple: true,
             query: {
@@ -101,6 +110,17 @@
             }
         });
     </script>
+
+   <!-- CKEditor init -->
+   <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
+    <script>
+        $('textarea[name=ce]').ckeditor({
+            height: 100,
+            filebrowserImageBrowseUrl: `/{{ env('FILEMANAGER_URL', 'filemanager') }}`,
+        });
+    </script>
+
 </body>
 
 </html>

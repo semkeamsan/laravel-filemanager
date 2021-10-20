@@ -271,7 +271,6 @@ Filemanager.prototype = {
     },
     selected: function (data, $el, event) {
 
-
         if (this.multiple_select) {
             this.items_selected[data.id] = data;
         } else {
@@ -770,6 +769,10 @@ Filemanager.prototype = {
                 var data = $el.data('fm');
                 if (data.type == 'folder') {
                     self.$left.find(`[fm_id="${data.id}"]`).find('a:first').click();
+                }else if(self.helpers.getUrlParam( 'CKEditor' )){
+                    var funcNum = self.helpers.getUrlParam( 'CKEditorFuncNum' );
+                    window.opener.CKEDITOR.tools.callFunction( funcNum, `${location.origin+data.path}` );
+                    window.close();
                 }
 
                 return false;
@@ -1069,7 +1072,12 @@ Filemanager.prototype = {
             }
             return `${Math.floor(seconds)} ${Filemanager.prototype.languages.seconds}`;
 
-        }
+        },
+        getUrlParam : function(paramName){
+            var reParam = new RegExp( '(?:[\?&]|&)' + paramName + '=([^&]+)', 'i' );
+            var match = window.location.search.match( reParam );
+            return ( match && match.length > 1 ) ? match[1] : null;
+        },
     },
     languages: {
         years: 'years',
