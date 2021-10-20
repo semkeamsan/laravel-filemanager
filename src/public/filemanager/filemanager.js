@@ -721,7 +721,6 @@ Filemanager.prototype = {
         },
         folder: function (self, $el, data) {
             $el.find(`[fm_id="show_folder"]:first`).click(e => {
-
                 if ($el.find(`[fm_id="show_folder"]:first>i`).hasClass('fa-sort-down')) {
                     $el.find(`[fm_id="show_folder"]:first>i`).addClass('fa-sort-up').removeClass('fa-sort-down');
                     $el.find('.fm_tree-list-item__content').find('i').addClass('fa-folder-open').removeClass('fa-folder');
@@ -766,6 +765,13 @@ Filemanager.prototype = {
                 self.selected(data, $el, e);
                 self.information(data);
                 self.options.callback(data);
+                return false;
+            }).dblclick(e=>{
+                var data = $el.data('fm');
+                if(data.type == 'folder'){
+                    self.$left.find(`[fm_id="${data.id}"]`).find('a:first').click();
+                }
+
                 return false;
             });
         },
