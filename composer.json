@@ -1,0 +1,26 @@
+{
+    "name": "semkeamsan/laravel-filemanager",
+    "description": "Laravel Package laravel-filemanager",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Semkeamsan\\LaravelFilemanager\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Semkeamsan\\LaravelFilemanager\\FilemangerServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "semkeamsan",
+            "email": "keamsan.sem@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
