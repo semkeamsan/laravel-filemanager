@@ -22,7 +22,6 @@
     </div>
 
 
-
     <script src="{{ asset('vendor/semkeamsan/laravel-filemanager/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/semkeamsan/laravel-filemanager/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor/semkeamsan/laravel-filemanager/filemanager/filemanager.js') }}"></script>
@@ -34,7 +33,7 @@
     <script>
         var _token = $('meta[name="csrf-token"]').attr("content");
         var filemanager = new Filemanager($(`#filemanager`), {
-            url: `{{ env('FILEMANAGER_URL','filemanager') }}`,
+            url: `/{{ env('FILEMANAGER_URL', 'filemanager') }}`,
             _token: _token,
         });
         filemanager.init();

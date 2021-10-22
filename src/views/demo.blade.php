@@ -64,8 +64,6 @@
         </div>
     </div>
 
-
-
     <script src="{{ asset('vendor/semkeamsan/laravel-filemanager/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/semkeamsan/laravel-filemanager/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor/semkeamsan/laravel-filemanager/filemanager/filemanager.js') }}"></script>
@@ -111,9 +109,9 @@
         });
     </script>
 
-   <!-- CKEditor init -->
-   <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
-   <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
+    <!-- CKEditor init -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
     <script>
         $('textarea[name=ce]').ckeditor({
             height: 100,

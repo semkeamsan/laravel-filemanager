@@ -248,7 +248,11 @@ Filemanager.prototype = {
     },
     item: function (data) {
         var $item = $(`<div class="fm_dataview-item fm_dataview-item--with-gap" fm_id="${data.id}">
-            <div class="fm_dataview-item__inner-html">
+            <div class="fm_dataview-item__inner-html position-relative">
+                <div class="custom-checkbox custom-control d-none" style="z-index: 1;position: absolute;right: 0;">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
+                    <label class="custom-control-label" for="customCheck1"></label>
+                </div>
                 <div class="fm_card_image-wrapper">
                     <div class="fm_card_image-sizer">
                         ${data.type == 'folder' ? `<div class="fm_grid-card__bg-icon fm_file-icon fm_file-icon--folder"></div>` :
@@ -285,6 +289,7 @@ Filemanager.prototype = {
             if (event.type == 'contextmenu') {
                 return;
             }
+            $el.find('.custom-checkbox').addClass('d-none');
             $el.find('.fm_card_image-wrapper').removeClass('fm_dataview-item--selected').removeClass('fm_dataview-item--focus');
             return delete(this.items_selected[data.id]);
         } else {
@@ -295,10 +300,11 @@ Filemanager.prototype = {
 
         }
         if (!this.multiple_select) {
+            this.$main.find(`.scroll-view`).find('.custom-checkbox').addClass('d-none');
             this.$main.find(`.scroll-view`).find('.fm_card_image-wrapper').removeClass('fm_dataview-item--selected').removeClass('fm_dataview-item--focus');
         }
         $el.find('.fm_card_image-wrapper').addClass('fm_dataview-item--selected fm_dataview-item--focus');
-
+        $el.find('.custom-checkbox').removeClass('d-none');
 
     },
     information: function (data) {
@@ -763,15 +769,15 @@ Filemanager.prototype = {
                 var data = $el.data('fm');
                 self.selected(data, $el, e);
                 self.information(data);
-                self.options.callback(data);
+                self.options.callback(self.items_selected);
                 return false;
             }).dblclick(e => {
                 var data = $el.data('fm');
                 if (data.type == 'folder') {
                     self.$left.find(`[fm_id="${data.id}"]`).find('a:first').click();
-                }else if(self.helpers.getUrlParam( 'CKEditor' )){
-                    var funcNum = self.helpers.getUrlParam( 'CKEditorFuncNum' );
-                    window.opener.CKEDITOR.tools.callFunction( funcNum, `${location.origin+data.path}` );
+                } else if (self.helpers.getUrlParam('CKEditor')) {
+                    var funcNum = self.helpers.getUrlParam('CKEditorFuncNum');
+                    window.opener.CKEDITOR.tools.callFunction(funcNum, `${location.origin+data.path}`);
                     window.close();
                 }
 
@@ -1073,10 +1079,10 @@ Filemanager.prototype = {
             return `${Math.floor(seconds)} ${Filemanager.prototype.languages.seconds}`;
 
         },
-        getUrlParam : function(paramName){
-            var reParam = new RegExp( '(?:[\?&]|&)' + paramName + '=([^&]+)', 'i' );
-            var match = window.location.search.match( reParam );
-            return ( match && match.length > 1 ) ? match[1] : null;
+        getUrlParam: function (paramName) {
+            var reParam = new RegExp('(?:[\?&]|&)' + paramName + '=([^&]+)', 'i');
+            var match = window.location.search.match(reParam);
+            return (match && match.length > 1) ? match[1] : null;
         },
     },
     languages: {
@@ -1126,14 +1132,19 @@ $.fn.filemanager = function (opts) {
                             <div id="filemanager"></div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary disabled" id="submit">${Filemanager.prototype.languages.ok}</button>
+                            <button class="btn btn-primary d-none" id="submit">${Filemanager.prototype.languages.ok}</button>
                         </div>
                     </div>
                 </div>
         </div>`);
     var options = {
         callback: data => {
-            $modal.find('.modal-footer #submit').removeClass('disabled');
+            if (Object.values(data).length) {
+                $modal.find('.modal-footer #submit').removeClass('d-none');
+            } else {
+                $modal.find('.modal-footer #submit').addClass('d-none');
+            }
+
         },
         template: data => {
             //multiple
@@ -1156,17 +1167,20 @@ $.fn.filemanager = function (opts) {
 
         $modal.modal('hide');
         $.each(Object.values(filemanager.items_selected), (i, data) => {
+            if (data.type == 'file') {
+                //One
+                var input = $(this).data('target-input');
+                var image = $(this).data('target-image');
+                $(input).val(data.path);
 
-            //One
-            var input = $(this).data('target-input');
-            var image = $(this).data('target-image');
-            $(input).val(data.path);
+                if (data.extension == 'image') {
+                    $(image).attr('src', `${data.path}`);
+                }
 
-            if (data.extension == 'image') {
-                $(image).attr('src', `${data.path}`);
+                options.template(data);
             }
 
-            options.template(data);
+
 
         });
         filemanager.items_selected = {};
