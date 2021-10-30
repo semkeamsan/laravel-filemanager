@@ -115,7 +115,7 @@
     <script>
         $('textarea[name=ce]').ckeditor({
             height: 100,
-            filebrowserImageBrowseUrl: `{{ env('FILEMANAGER_URL', 'filemanager') }}`,
+            filebrowserImageBrowseUrl: `/{{ env('FILEMANAGER_URL', 'filemanager') }}`,
         });
     </script>
 
