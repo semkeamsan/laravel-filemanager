@@ -11,9 +11,9 @@
     <!-- Styles -->
     <link href="{{ asset('vendor/semkeamsan/laravel-filemanager/bootstrap/css/bootstrap.min.css') }}"
         rel="stylesheet">
-    <link href="{{ asset('vendor/semkeamsan/laravel-filemanager/filemanager/filemanager.css') }}" rel="stylesheet">
     <!-- Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    @filemanagerStyle
 </head>
 
 <body class="bg-white">
@@ -24,11 +24,7 @@
 
     <script src="{{ asset('vendor/semkeamsan/laravel-filemanager/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/semkeamsan/laravel-filemanager/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('vendor/semkeamsan/laravel-filemanager/filemanager/filemanager.js') }}"></script>
-    @if (app()->getLocale() != 'en')
-        <script src="{{ asset('vendor/semkeamsan/laravel-filemanager/filemanager/locales/' . app()->getLocale() . '.js') }}">
-        </script>
-    @endif
+    @filemanagerScript
 
     <script>
         var _token = $('meta[name="csrf-token"]').attr("content");
