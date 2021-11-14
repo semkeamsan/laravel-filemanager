@@ -68,7 +68,7 @@ class FilemanagerController extends Controller
                 $t->where('extension', request('extension'));
             });
         })->get()->map(function ($row) {
-            $row->path =  Storage::url( rtrim($row->path(), '/'));
+            $row->path =  Storage::url(rtrim($row->path(), '/'));
             if ($row->type == 'folder') {
                 $row->size =  $row->files->sum('size');
             }

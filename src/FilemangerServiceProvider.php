@@ -15,6 +15,8 @@ class FilemangerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->mergeConfigFrom(__DIR__ . '/config/laravel-filemanager.php', 'filemanager-config');
+
         $this->loadTranslationsFrom(__DIR__ . '/lang',  $this->path );
         $this->loadRoutesFrom(__DIR__ . '/routes.php');
         $this->loadMigrationsFrom(__DIR__ . '/migrations');
@@ -34,6 +36,7 @@ class FilemangerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/views' => base_path('resources/views/vendor/semkeamsan/filemanager'),
         ],  $this->path . '-view');
+
     }
 
     /**
@@ -43,6 +46,7 @@ class FilemangerServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
         $style = '<link href="' . asset('vendor/' . $this->path . '/filemanager/filemanager.css') . '" rel="stylesheet">';
         $script =  '<script src="' . asset('vendor/' . $this->path . '/filemanager/filemanager.js') . '"></script>';
         if (app()->getLocale() != 'en') {
@@ -58,6 +62,7 @@ class FilemangerServiceProvider extends ServiceProvider
         Blade::directive('filemanagerAssets', function () use ($style, $script) {
             return $style . $script;
         });
-        $this->mergeConfigFrom(__DIR__ . '/config/laravel-filemanager.php', 'filemanager-config');
+
     }
+
 }
