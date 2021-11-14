@@ -38,15 +38,16 @@ class FilemanagerTempController extends Controller
         foreach ($request->allfiles as $key => $file) {
             if (!Filemanager::where('parent_id', $request->parent_id)->where('type', $request->type)->where('name', $file['name'])->count()) {
                 $slug = Str::random(20);
-                if (Storage::move($this->root . $file['name'], 'public/' . $folder . $file['name'])) {
-                    Storage::delete($this->root . $file['name']);
-                    $file['slug'] = $slug;
-                    $file['parent_id'] = $request->parent_id;
-                    $file['type'] = $request->type;
-                    $f =   Filemanager::create($file);
-                    $f->path = Storage::url(rtrim($f->path(), '/'));
-                    $filemanagers->add($f);
+                if(!Storage::exists('public/' . $folder . $file['name'])){
+                    Storage::move($this->root . $file['name'], 'public/' . $folder . $file['name']);
                 }
+                Storage::delete($this->root . $file['name']);
+                $file['slug'] = $slug;
+                $file['parent_id'] = $request->parent_id;
+                $file['type'] = $request->type;
+                $f =   Filemanager::create($file);
+                $f->path = Storage::url(rtrim($f->path(), '/'));
+                $filemanagers->add($f);
             }
         }
         return $filemanagers;

@@ -73,7 +73,7 @@ Filemanager.prototype = {
                 </div>
                 `}
                 <div class="fm_tree-list-item__content">
-                    <a class="d-flex" href="/${this.options.url}${data.id ? `/folder/${data.id}` : '' }">
+                    <a class="align-items-baseline d-flex" href="/${this.options.url}${data.id ? `/folder/${data.id}` : '' }">
                         <i
                             class="fas ${ data.id == active || data.children.find(o => o.id === active) ? 'fa-folder-open' : 'fa-folder' }"></i>
                         <span class="fm_tree-list-item__text">${data.name}</span>
@@ -503,7 +503,7 @@ Filemanager.prototype = {
                                     $t.remove();
                                     $overlay.remove();
                                 } else {
-                                    $t.find(`[fm_id="name"]`).after(`<div fm_id="waring" class="my-2 text-red text-sm">Folder already exists.</div>`);
+                                    $t.find(`[fm_id="name"]`).after(`<div fm_id="waring" class="my-2 text-red text-sm">${Filemanager.prototype.languages.folder_already_exists}</div>`);
                                 }
                             },
 
@@ -587,7 +587,7 @@ Filemanager.prototype = {
                                     $t.remove();
                                     $overlay.remove();
                                 } else {
-                                    $t.find(`[fm_id="name"]`).after(`<div fm_id="waring" class="my-2 text-red text-sm">File already exists.</div>`);
+                                    $t.find(`[fm_id="name"]`).after(`<div fm_id="waring" class="my-2 text-red text-sm">${Filemanager.prototype.languages.file_already_exists}</div>`);
                                 }
                             },
 
@@ -875,7 +875,7 @@ Filemanager.prototype = {
                             <div class="fm_widget fm_layout fm_layout-rows fm_form" >
                                 <div class="fm_form-element">
                                     <div class="fm_form-group ">
-                                        <label for="" class="fm_label">Rename "${data.name}" ${data.type == 'file' ? Filemanager.prototype.languages.file : Filemanager.prototype.languages.folder }</label>
+                                        <label for="" class="fm_label">${Filemanager.prototype.languages.rename} ${data.type == 'file' ? Filemanager.prototype.languages.file : Filemanager.prototype.languages.folder }</label>
                                         <div class="fm_input__wrapper">
                                             <div class="fm_input__container">
                                                 <input type="text" fm_id="name" id="" placeholder="${data.name}" name="name" class="fm_input " autocomplete="off">
@@ -1094,6 +1094,8 @@ Filemanager.prototype = {
         seconds: 'seconds',
         add: 'Add',
         folder: 'folder',
+        folder_already_exists: 'Folder already exists.',
+        file_already_exists: 'File already exists.',
         file: 'file',
         add_folder: 'Add folder',
         add_file: 'Add file',

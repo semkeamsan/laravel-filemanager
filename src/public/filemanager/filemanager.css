@@ -44,7 +44,7 @@
 }
 
 .fm_widget {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -261,7 +261,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
@@ -272,18 +272,19 @@
 
 
 .fm_button--view_flat.fm_button--color_primary {
-    background-color: #0288d1;
-    outline-width: 0
+    background-color: var(--primary);
+    outline-width: 0;
+    min-width: 100px;
 }
 
 .fm_button--view_flat.fm_button--color_primary.fm_button--active,
 .fm_button--view_flat.fm_button--color_primary:focus,
 .fm_button--view_flat.fm_button--color_primary:hover {
-    background-color: #35a0da
+    background-color: var(--primary)
 }
 
 .fm_button--view_flat.fm_button--color_primary:active {
-    background-color: #0288d1;
+    background-color: var(--primary);
     box-shadow: none
 }
 
@@ -359,7 +360,7 @@
 .fm_layout-cell-header--collapseble:focus-visible .fm_layout-cell-header__title,
 .fm_layout-cell-header--collapseble:hover .fm_layout-cell-header__collapse-icon,
 .fm_layout-cell-header--collapseble:hover .fm_layout-cell-header__title {
-    color: #0288d1;
+    color: var(--primary);
     transition: color .2s ease-out
 }
 
@@ -541,7 +542,7 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 12px;
     line-height: 24px;
     color: #fff;
@@ -578,7 +579,7 @@
 }
 
 .fm_navbar-count--color_primary {
-    background-color: #0288d1
+    background-color: var(--primary)
 }
 
 .fm_navbar-count--color_secondary {
@@ -618,7 +619,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .7);
@@ -702,7 +703,7 @@
     position: absolute;
     right: -32px;
     bottom: 4px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     color: rgba(0, 0, 0, .3);
     font-size: 16px;
     line-height: 16px;
@@ -794,7 +795,7 @@
     content: "#";
     display: block;
     margin-bottom: 8px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 12px;
     line-height: 16px;
     color: rgba(0, 0, 0, .5);
@@ -837,7 +838,7 @@
 
 .fm_calendar-week-number,
 .fm_calendar-weekday {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     color: rgba(0, 0, 0, .5);
     text-align: center
 }
@@ -861,7 +862,7 @@
     position: relative;
     flex: 1 0 14%;
     margin-bottom: 12px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .5);
@@ -902,7 +903,7 @@
 }
 
 .fm_calendar-day--weekend {
-    color: #0288d1
+    color: var(--primary)
 }
 
 .fm_calendar-day--hidden {
@@ -940,7 +941,7 @@
 
 .fm_calendar-day--selected:before {
     opacity: 1;
-    background-color: #0288d1
+    background-color: var(--primary)
 }
 
 .fm_calendar-day--selected-first:after {
@@ -988,7 +989,7 @@
     position: relative;
     flex: 1 0 25%;
     margin-bottom: 8px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 50px;
     color: rgba(0, 0, 0, .7);
@@ -1049,7 +1050,7 @@
 .fm_calendar-year--selected:before {
     opacity: 1;
     transition: opacity .2s ease-in, background-color .2s ease-in;
-    background-color: #0288d1
+    background-color: var(--primary)
 }
 
 .fm_chart {
@@ -1126,7 +1127,7 @@
 .fm_chart .legend-text,
 .fm_chart .scale-text,
 .fm_chart .scale-title {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 400;
     font-size: 14px;
     fill: #898f97
@@ -1201,7 +1202,7 @@
 
 .fm_chart .bar-text,
 .fm_chart .radar-axis-text {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif
 }
 
 .fm_chart .radar-axis-text {
@@ -1240,7 +1241,7 @@
     padding: 6px 12px;
     transition: opacity .01s ease, transform .01s ease;
     z-index: 999;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     color: #fff;
     position: absolute;
     pointer-events: none
@@ -1291,7 +1292,7 @@
 .fm_chart .tooltip-text {
     font-size: 12px;
     line-height: 12px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     fill: #fff;
     font-weight: 500
 }
@@ -1308,7 +1309,7 @@
 
 .fm_chart .pie-inner-value,
 .fm_chart .pie-value {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif
 }
 
 .fm_chart .pie-inner-value {
@@ -1325,14 +1326,14 @@
 }
 
 .fm_chart .donut-value-title {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     fill: #898f97;
     font-size: 14px;
     line-height: 18px
 }
 
 .fm_chart .donut-value {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     fill: #555;
     font-size: 12px;
     line-height: 14px
@@ -1351,7 +1352,7 @@
     animation: appear .2s ease-in-out forwards;
     background: #fff;
     will-change: transform;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
@@ -1433,7 +1434,7 @@
 }
 
 .fm_colorpicker {
-    font-family: Roboto, sans-serif;
+    font-family: Battambang,Roboto, sans-serif;
     font-weight: 500;
     overflow: hidden;
     border: 1px solid #e4e4e4;
@@ -1689,7 +1690,7 @@
 
 .fm_list-item,
 .fm_list-item--text {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif
 }
 
 .fm_list-item--text {
@@ -1701,7 +1702,7 @@
 
 .fm_list-item--selected {
     background-color: #f7f7f7;
-    box-shadow: inset 2px 0 0 0 #0288d1
+    box-shadow: inset 2px 0 0 0 var(--primary)
 }
 
 .fm_list-item--focus,
@@ -1861,7 +1862,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .7);
@@ -1942,7 +1943,7 @@
 }
 
 .fm_combobox-tag__value {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .7);
@@ -2001,7 +2002,7 @@
 .fm_combobox-options__item {
     display: flex;
     align-items: center;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     padding: 6px 8px;
@@ -2013,7 +2014,7 @@
 }
 
 .fm_combobox-options__item--select-all {
-    color: #0288d1;
+    color: var(--primary);
     line-height: 20px;
     border-bottom: 1px solid #e4e4e4
 }
@@ -2075,7 +2076,7 @@
 }
 
 .fm_dataview-item--selected {
-    box-shadow: inset 0 0 0 1px #0288d1;
+    box-shadow: inset 0 0 0 1px var(--primary);
     transition: box-shadow .2s ease-out
 }
 
@@ -2206,7 +2207,7 @@
     display: inline-flex;
     align-items: center;
     padding: 0 8px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 400;
     vertical-align: middle;
     height: 100%;
@@ -2326,7 +2327,7 @@
 .fm_grid-sort-icon--asc,
 .fm_grid-sort-icon--desc {
     opacity: 1;
-    color: #0288d1;
+    color: var(--primary);
     transition: color .2s ease-out
 }
 
@@ -2544,7 +2545,7 @@
     display: inline-flex;
     align-items: center;
     padding: 0 8px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 400;
     vertical-align: middle;
     height: 100%;
@@ -2633,7 +2634,7 @@
     display: inline-flex;
     font-size: 14px;
     color: rgba(0, 0, 0, .7);
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 400;
     vertical-align: middle;
     height: 100%;
@@ -2735,13 +2736,13 @@
 }
 
 .fm_grid-selected-row {
-    border-left: 2px solid #0288d1;
+    border-left: 2px solid var(--primary);
     background: rgba(77, 77, 77, .08);
     pointer-events: none
 }
 
 .fm_grid-selected-cell {
-    border: 2px solid #0288d1;
+    border: 2px solid var(--primary);
     background-color: transparent;
     pointer-events: none
 }
@@ -2759,7 +2760,7 @@
 }
 
 .fm_cell-editor {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 400;
     width: 100%;
@@ -2769,13 +2770,13 @@
     border: none;
     border-radius: 0;
     background: transparent;
-    box-shadow: inset 0 0 0 1px #0288d1;
+    box-shadow: inset 0 0 0 1px var(--primary);
     outline: none
 }
 
 .fm_cell-editor__combobox .fm_combobox-input-box {
     padding: 0 25px 0 8px;
-    box-shadow: inset 0 0 0 1px #0288d1
+    box-shadow: inset 0 0 0 1px var(--primary)
 }
 
 .fm_cell-editor__input {
@@ -2816,7 +2817,7 @@
     display: inline-flex;
     align-items: center;
     padding: 0 8px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 400;
     vertical-align: middle;
     height: 100%;
@@ -2892,7 +2893,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -3094,7 +3095,7 @@
     align-items: center;
     padding: 8px 12px;
     font-weight: 500;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .7);
@@ -3164,7 +3165,7 @@
     justify-content: space-between;
     padding: 8px;
     text-align: left;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -3206,7 +3207,7 @@
     line-height: 20px
 }
 .fm_menu-button__text{
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
 }
 .fm_menu-button__icon+.fm_menu-button__text {
     margin-left: 8px
@@ -3307,7 +3308,7 @@
     width: 100%;
     padding: 6px 12px;
     box-shadow: inset 0 0 0 1px #dfdfdf;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
@@ -3539,7 +3540,7 @@
 .fm_ribbon-content-label {
     position: relative;
     display: inline;
-    font-family: Roboto;
+    font-family: Battambang,Roboto;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -3640,7 +3641,7 @@
     justify-content: flex-start;
     align-items: center;
     padding: 12px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
@@ -3673,7 +3674,7 @@
 }
 
 .fm_sidebar-button--active {
-    box-shadow: inset 2px 0 0 0 #0288d1
+    box-shadow: inset 2px 0 0 0 var(--primary)
 }
 
 .fm_sidebar-button--disabled,
@@ -3818,7 +3819,7 @@
     justify-content: center;
     align-items: center;
     padding: 6px 12px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     font-weight: 500;
@@ -3912,7 +3913,7 @@
     padding: 0;
     margin-top: -8px;
     margin-bottom: -8px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .7);
@@ -4132,7 +4133,7 @@
 
 .fm_tabbar-header-active {
     position: absolute;
-    background-color: #0288d1;
+    background-color: var(--primary);
     z-index: 1
 }
 
@@ -4147,7 +4148,7 @@
     transform: translateY(-50%);
     z-index: 1;
     opacity: .7;
-    color: #0288d1;
+    color: var(--primary);
     cursor: pointer
 }
 
@@ -4162,14 +4163,14 @@
 .fm_tabbar-tab-button {
     width: 100%;
     height: 100%;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
     position: relative;
     padding: 12px 24px;
     border-radius: 0;
-    color: #0288d1;
+    color: var(--primary);
     background-color: transparent;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -4349,7 +4350,7 @@
 
 .fm_tree-list-item__text {
     padding-left: 4px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: normal;
     color: rgba(0, 0, 0, .7);
@@ -4414,7 +4415,7 @@
 .fm_tree-folder--selected:before,
 .fm_tree-list-item--selected:before {
     transition: background-color .2s ease-out;
-    box-shadow: inset 2px 0 0 0 #0288d1;
+    box-shadow: inset 2px 0 0 0 var(--primary);
     background-color: #f7f7f7
 }
 
@@ -4429,7 +4430,7 @@
 
 .fm_tree-checkbox {
     padding-right: 4px;
-    color: #0288d1
+    color: var(--primary)
 }
 
 .fm_tree-checkbox.dxi-checkbox-blank-outline {
@@ -4439,7 +4440,7 @@
 .fm_tree-input {
     height: 20px;
     width: 100%;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     color: rgba(0, 0, 0, .7);
     padding: 0;
@@ -4526,7 +4527,7 @@
     white-space: pre-wrap;
     word-break: break-word;
     text-align: left;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: normal;
     color: inherit;
@@ -4583,7 +4584,7 @@
 
 .fm_window-content,
 .fm_window-content-without-header {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: rgba(0, 0, 0, .5);
@@ -4872,7 +4873,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_dataview-item--selected .fm_grid-card__caption {
-    color: #0288d1
+    color: var(--primary)
 }
 
 .fm_dataview-item--selected .fm_card_image-wrapper {
@@ -4882,7 +4883,7 @@ body.fm_window--no-scroll {
 .fm_dataview-item--selected .fm_card_image-wrapper:after {
     content: "";
     display: block;
-    border: 1px solid #0288d1;
+    border: 1px solid var(--primary);
     border-radius: 2px;
     position: absolute;
     top: -2px;
@@ -4927,7 +4928,7 @@ body.fm_window--no-scroll {
 .fm_grid-card__caption {
     text-align: center;
     padding: 4px 0;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 500;
     color: rgba(0, 0, 0, .7);
@@ -5036,7 +5037,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_sidebar .fm_progressBar {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 500;
     color: rgba(0, 0, 0, .7);
@@ -5057,7 +5058,7 @@ body.fm_window--no-scroll {
 .fm_sidebar .fm_progressBar__occupied {
     height: 8px;
     border-radius: 4px;
-    background: #0288d1
+    background: var(--primary)
 }
 
 .fm_add-menu {
@@ -5171,7 +5172,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_widget {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -5252,7 +5253,7 @@ body.fm_window--no-scroll {
 
 .fm_drag-ghost .fm_list-item--selected {
     background-color: #fff;
-    box-shadow: inset 0 0 0 0 #0288d1
+    box-shadow: inset 0 0 0 0 var(--primary)
 }
 
 .fm_drag-ghost .fm_list-item--focus,
@@ -5272,7 +5273,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_drag-ghost .fm_tree-list-item__text {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     vertical-align: middle;
     line-height: 20px;
@@ -5935,7 +5936,7 @@ body.fm_window--no-scroll {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
@@ -5950,18 +5951,18 @@ body.fm_window--no-scroll {
 }
 
 .fm_button--view_flat.fm_button--color_primary {
-    background-color: #0288d1;
+    background-color: var(--primary);
     outline-width: 0
 }
 
 .fm_button--view_flat.fm_button--color_primary.fm_button--active,
 .fm_button--view_flat.fm_button--color_primary:focus,
 .fm_button--view_flat.fm_button--color_primary:hover {
-    background-color: #35a0da
+    background-color: var(--primary)
 }
 
 .fm_button--view_flat.fm_button--color_primary:active {
-    background-color: #0288d1;
+    background-color: var(--primary);
     box-shadow: none
 }
 
@@ -6037,7 +6038,7 @@ body.fm_window--no-scroll {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
@@ -6053,7 +6054,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_button--view_link.fm_button--color_primary {
-    color: #0288d1;
+    color: var(--primary);
     outline-width: 0
 }
 
@@ -6359,7 +6360,7 @@ body.fm_window--no-scroll {
     height: auto;
     padding: 6px 8px;
     margin: 0;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .7);
@@ -6433,7 +6434,7 @@ body.fm_window--no-scroll {
     left: 0;
     bottom: 0;
     max-width: 100%;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 12px;
     font-weight: 400;
     line-height: 16px;
@@ -6480,13 +6481,13 @@ body.fm_window--no-scroll {
     padding: 0;
     width: auto;
     flex: 0 1 auto;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .7);
     white-space: nowrap;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     text-overflow: ellipsis;
     cursor: pointer;
     transition: color .2s ease-in, opacity .2s ease-in
@@ -6513,7 +6514,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_label-help {
-    color: #0288d1;
+    color: var(--primary);
     text-align: center;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -6597,16 +6598,16 @@ body.fm_window--no-scroll {
 }
 
 .fm_checkbox__input:focus-visible+.fm_checkbox__visual-input {
-    border-color: #0288d1;
+    border-color: var(--primary);
     outline: 1px dashed #005fcc;
     outline-offset: -1px
 }
 
 .fm_checkbox__input:checked+.fm_checkbox__visual-input {
-    background-color: #0288d1;
+    background-color: var(--primary);
     background-position: 50%;
     background-size: cover;
-    border-color: #0288d1;
+    border-color: var(--primary);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIxIDdMOSAxOWwtNS41LTUuNSAxLjQxLTEuNDFMOSAxNi4xNyAxOS41OSA1LjU5IDIxIDd6Ii8+PC9zdmc+);
     transition: background-color .2s ease-out
 }
@@ -6658,14 +6659,14 @@ body.fm_window--no-scroll {
 }
 
 .fm_radiobutton__input:focus-visible+.fm_radiobutton__visual-input {
-    border-color: #0288d1;
+    border-color: var(--primary);
     outline: 1px dashed #005fcc;
     outline-offset: -1px
 }
 
 .fm_radiobutton__input:checked+.fm_radiobutton__visual-input {
-    background-color: #0288d1;
-    border-color: #0288d1;
+    background-color: var(--primary);
+    border-color: var(--primary);
     box-shadow: inset 0 0 0 4px #fff;
     transition: background-color .2s ease-out
 }
@@ -6686,7 +6687,7 @@ body.fm_window--no-scroll {
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .7)
@@ -6699,7 +6700,7 @@ body.fm_window--no-scroll {
 .fm_simplevault {
     border: none;
     border-radius: 2px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     line-height: 20px;
     font-size: 14px;
     font-weight: 400;
@@ -6737,7 +6738,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_simplevault__label {
-    color: #0288d1;
+    color: var(--primary);
     cursor: pointer
 }
 
@@ -6767,7 +6768,7 @@ body.fm_window--no-scroll {
 
 .fm_simplevault-files__item {
     position: relative;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     line-height: 20px;
     font-size: 14px;
     text-align: left;
@@ -6811,7 +6812,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_simplevault-loader .fm_simplevault__icon:before {
-    color: #0288d1
+    color: var(--primary)
 }
 
 .fm_slider {
@@ -6956,7 +6957,7 @@ body.fm_window--no-scroll {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: #0288d1;
+    background-color: var(--primary);
     transition: transform .1s ease-out, border-color .2s ease-out, background-color .2s ease-out;
     will-change: transform;
     cursor: pointer
@@ -6988,7 +6989,7 @@ body.fm_window--no-scroll {
 .fm_slider__thumb:after {
     width: 16px;
     height: 16px;
-    background-color: #0288d1
+    background-color: var(--primary)
 }
 
 .fm_slider__thumb:focus,
@@ -7045,7 +7046,7 @@ body.fm_window--no-scroll {
     border-radius: 2px;
     background-color: #333;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -7064,7 +7065,7 @@ body.fm_window--no-scroll {
     top: 50%;
     transform: translateY(-50%);
     height: 2px;
-    background-color: #0288d1;
+    background-color: var(--primary);
     pointer-events: none
 }
 
@@ -7096,7 +7097,7 @@ body.fm_window--no-scroll {
     position: absolute;
     top: 10px;
     transform: translateX(-50%);
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 10px;
     color: rgba(0, 0, 0, .7);
     line-height: 1
@@ -7167,7 +7168,7 @@ body.fm_window--no-scroll {
 
 .fm_message,
 .fm_message__text {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 500;
     line-height: 20px;
     font-size: 14px;
@@ -7238,7 +7239,7 @@ body.fm_window--no-scroll {
 
 .fm_alert__content,
 .fm_alert__header {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px
 }
 
@@ -7279,7 +7280,7 @@ body.fm_window--no-scroll {
     transition: opacity .01s ease, transform .01s ease;
     opacity: 0;
     z-index: 999;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif
 }
 
 .fm_tooltip--animate {
@@ -7516,7 +7517,7 @@ body.fm_window--no-scroll {
 .fm_layout-cell-header--collapseble:focus-visible .fm_layout-cell-header__title,
 .fm_layout-cell-header--collapseble:hover .fm_layout-cell-header__collapse-icon,
 .fm_layout-cell-header--collapseble:hover .fm_layout-cell-header__title {
-    color: #0288d1;
+    color: var(--primary);
     transition: color .2s ease-out
 }
 
@@ -7698,7 +7699,7 @@ body.fm_window--no-scroll {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 12px;
     line-height: 24px;
     color: #fff;
@@ -7735,7 +7736,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_navbar-count--color_primary {
-    background-color: #0288d1
+    background-color: var(--primary)
 }
 
 .fm_navbar-count--color_secondary {
@@ -7775,7 +7776,7 @@ body.fm_window--no-scroll {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .7);
@@ -7859,7 +7860,7 @@ body.fm_window--no-scroll {
     position: absolute;
     right: -32px;
     bottom: 4px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     color: rgba(0, 0, 0, .3);
     font-size: 16px;
     line-height: 16px;
@@ -7951,7 +7952,7 @@ body.fm_window--no-scroll {
     content: "#";
     display: block;
     margin-bottom: 8px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 12px;
     line-height: 16px;
     color: rgba(0, 0, 0, .5);
@@ -7994,7 +7995,7 @@ body.fm_window--no-scroll {
 
 .fm_calendar-week-number,
 .fm_calendar-weekday {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     color: rgba(0, 0, 0, .5);
     text-align: center
 }
@@ -8018,7 +8019,7 @@ body.fm_window--no-scroll {
     position: relative;
     flex: 1 0 14%;
     margin-bottom: 12px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .5);
@@ -8059,7 +8060,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_calendar-day--weekend {
-    color: #0288d1
+    color: var(--primary)
 }
 
 .fm_calendar-day--hidden {
@@ -8097,7 +8098,7 @@ body.fm_window--no-scroll {
 
 .fm_calendar-day--selected:before {
     opacity: 1;
-    background-color: #0288d1
+    background-color: var(--primary)
 }
 
 .fm_calendar-day--selected-first:after {
@@ -8145,7 +8146,7 @@ body.fm_window--no-scroll {
     position: relative;
     flex: 1 0 25%;
     margin-bottom: 8px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 50px;
     color: rgba(0, 0, 0, .7);
@@ -8206,7 +8207,7 @@ body.fm_window--no-scroll {
 .fm_calendar-year--selected:before {
     opacity: 1;
     transition: opacity .2s ease-in, background-color .2s ease-in;
-    background-color: #0288d1
+    background-color: var(--primary)
 }
 
 .fm_chart {
@@ -8283,7 +8284,7 @@ body.fm_window--no-scroll {
 .fm_chart .legend-text,
 .fm_chart .scale-text,
 .fm_chart .scale-title {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 400;
     font-size: 14px;
     fill: #898f97
@@ -8358,7 +8359,7 @@ body.fm_window--no-scroll {
 
 .fm_chart .bar-text,
 .fm_chart .radar-axis-text {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif
 }
 
 .fm_chart .radar-axis-text {
@@ -8397,7 +8398,7 @@ body.fm_window--no-scroll {
     padding: 6px 12px;
     transition: opacity .01s ease, transform .01s ease;
     z-index: 999;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     color: #fff;
     position: absolute;
     pointer-events: none
@@ -8448,7 +8449,7 @@ body.fm_window--no-scroll {
 .fm_chart .tooltip-text {
     font-size: 12px;
     line-height: 12px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     fill: #fff;
     font-weight: 500
 }
@@ -8465,7 +8466,7 @@ body.fm_window--no-scroll {
 
 .fm_chart .pie-inner-value,
 .fm_chart .pie-value {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif
 }
 
 .fm_chart .pie-inner-value {
@@ -8482,14 +8483,14 @@ body.fm_window--no-scroll {
 }
 
 .fm_chart .donut-value-title {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     fill: #898f97;
     font-size: 14px;
     line-height: 18px
 }
 
 .fm_chart .donut-value {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     fill: #555;
     font-size: 12px;
     line-height: 14px
@@ -8508,7 +8509,7 @@ body.fm_window--no-scroll {
     animation: appear .2s ease-in-out forwards;
     background: #fff;
     will-change: transform;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
@@ -8590,7 +8591,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_colorpicker {
-    font-family: Roboto, sans-serif;
+    font-family: Battambang,Roboto, sans-serif;
     font-weight: 500;
     overflow: hidden;
     border: 1px solid #e4e4e4;
@@ -8846,7 +8847,7 @@ body.fm_window--no-scroll {
 
 .fm_list-item,
 .fm_list-item--text {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif
 }
 
 .fm_list-item--text {
@@ -8858,7 +8859,7 @@ body.fm_window--no-scroll {
 
 .fm_list-item--selected {
     background-color: #f7f7f7;
-    box-shadow: inset 2px 0 0 0 #0288d1
+    box-shadow: inset 2px 0 0 0 var(--primary)
 }
 
 .fm_list-item--focus,
@@ -9018,7 +9019,7 @@ body.fm_window--no-scroll {
     right: 0;
     bottom: 0;
     left: 0;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .7);
@@ -9099,7 +9100,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_combobox-tag__value {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .7);
@@ -9158,7 +9159,7 @@ body.fm_window--no-scroll {
 .fm_combobox-options__item {
     display: flex;
     align-items: center;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     padding: 6px 8px;
@@ -9170,7 +9171,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_combobox-options__item--select-all {
-    color: #0288d1;
+    color: var(--primary);
     line-height: 20px;
     border-bottom: 1px solid #e4e4e4
 }
@@ -9237,7 +9238,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_dataview-item--selected {
-    box-shadow: inset 0 0 0 1px #0288d1;
+    box-shadow: inset 0 0 0 1px var(--primary);
     transition: box-shadow .2s ease-out
 }
 
@@ -9368,7 +9369,7 @@ body.fm_window--no-scroll {
     display: inline-flex;
     align-items: center;
     padding: 0 8px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 400;
     vertical-align: middle;
     height: 100%;
@@ -9488,7 +9489,7 @@ body.fm_window--no-scroll {
 .fm_grid-sort-icon--asc,
 .fm_grid-sort-icon--desc {
     opacity: 1;
-    color: #0288d1;
+    color: var(--primary);
     transition: color .2s ease-out
 }
 
@@ -9706,7 +9707,7 @@ body.fm_window--no-scroll {
     display: inline-flex;
     align-items: center;
     padding: 0 8px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 400;
     vertical-align: middle;
     height: 100%;
@@ -9795,7 +9796,7 @@ body.fm_window--no-scroll {
     display: inline-flex;
     font-size: 14px;
     color: rgba(0, 0, 0, .7);
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 400;
     vertical-align: middle;
     height: 100%;
@@ -9897,13 +9898,13 @@ body.fm_window--no-scroll {
 }
 
 .fm_grid-selected-row {
-    border-left: 2px solid #0288d1;
+    border-left: 2px solid var(--primary);
     background: rgba(77, 77, 77, .08);
     pointer-events: none
 }
 
 .fm_grid-selected-cell {
-    border: 2px solid #0288d1;
+    border: 2px solid var(--primary);
     background-color: transparent;
     pointer-events: none
 }
@@ -9921,7 +9922,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_cell-editor {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 400;
     width: 100%;
@@ -9931,13 +9932,13 @@ body.fm_window--no-scroll {
     border: none;
     border-radius: 0;
     background: transparent;
-    box-shadow: inset 0 0 0 1px #0288d1;
+    box-shadow: inset 0 0 0 1px var(--primary);
     outline: none
 }
 
 .fm_cell-editor__combobox .fm_combobox-input-box {
     padding: 0 25px 0 8px;
-    box-shadow: inset 0 0 0 1px #0288d1
+    box-shadow: inset 0 0 0 1px var(--primary)
 }
 
 .fm_cell-editor__input {
@@ -9978,7 +9979,7 @@ body.fm_window--no-scroll {
     display: inline-flex;
     align-items: center;
     padding: 0 8px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-weight: 400;
     vertical-align: middle;
     height: 100%;
@@ -10054,7 +10055,7 @@ body.fm_window--no-scroll {
     position: relative;
     width: 100%;
     height: 100%;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -10256,7 +10257,7 @@ body.fm_window--no-scroll {
     align-items: center;
     padding: 8px 12px;
     font-weight: 500;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .7);
@@ -10326,7 +10327,7 @@ body.fm_window--no-scroll {
     justify-content: space-between;
     padding: 8px;
     text-align: left;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -10465,7 +10466,7 @@ body.fm_window--no-scroll {
     width: 100%;
     padding: 6px 12px;
     box-shadow: inset 0 0 0 1px #dfdfdf;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
@@ -10697,7 +10698,7 @@ body.fm_window--no-scroll {
 .fm_ribbon-content-label {
     position: relative;
     display: inline;
-    font-family: Roboto;
+    font-family: Battambang,Roboto;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -10798,7 +10799,7 @@ body.fm_window--no-scroll {
     justify-content: flex-start;
     align-items: center;
     padding: 12px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
@@ -10831,7 +10832,7 @@ body.fm_window--no-scroll {
 }
 
 .fm_sidebar-button--active {
-    box-shadow: inset 2px 0 0 0 #0288d1
+    box-shadow: inset 2px 0 0 0 var(--primary)
 }
 
 .fm_sidebar-button--disabled,
@@ -10976,7 +10977,7 @@ body.fm_window--no-scroll {
     justify-content: center;
     align-items: center;
     padding: 6px 12px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     font-weight: 500;
@@ -11070,7 +11071,7 @@ body.fm_window--no-scroll {
     padding: 0;
     margin-top: -8px;
     margin-bottom: -8px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: rgba(0, 0, 0, .7);
@@ -11290,7 +11291,7 @@ body.fm_window--no-scroll {
 
 .fm_tabbar-header-active {
     position: absolute;
-    background-color: #0288d1;
+    background-color: var(--primary);
     z-index: 1
 }
 
@@ -11305,7 +11306,7 @@ body.fm_window--no-scroll {
     transform: translateY(-50%);
     z-index: 1;
     opacity: .7;
-    color: #0288d1;
+    color: var(--primary);
     cursor: pointer
 }
 
@@ -11320,14 +11321,14 @@ body.fm_window--no-scroll {
 .fm_tabbar-tab-button {
     width: 100%;
     height: 100%;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
     position: relative;
     padding: 12px 24px;
     border-radius: 0;
-    color: #0288d1;
+    color: var(--primary);
     background-color: transparent;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -11507,7 +11508,7 @@ body.fm_window--no-scroll {
 
 .fm_tree-list-item__text {
     padding-left: 4px;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: normal;
     color: rgba(0, 0, 0, .7);
@@ -11572,7 +11573,7 @@ body.fm_window--no-scroll {
 .fm_tree-folder--selected:before,
 .fm_tree-list-item--selected:before {
     transition: background-color .2s ease-out;
-    box-shadow: inset 2px 0 0 0 #0288d1;
+    box-shadow: inset 2px 0 0 0 var(--primary);
     background-color: #f7f7f7
 }
 
@@ -11587,7 +11588,7 @@ body.fm_window--no-scroll {
 
 .fm_tree-checkbox {
     padding-right: 4px;
-    color: #0288d1
+    color: var(--primary)
 }
 
 .fm_tree-checkbox.dxi-checkbox-blank-outline {
@@ -11597,7 +11598,7 @@ body.fm_window--no-scroll {
 .fm_tree-input {
     height: 20px;
     width: 100%;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     color: rgba(0, 0, 0, .7);
     padding: 0;
@@ -11684,7 +11685,7 @@ body.fm_window--no-scroll {
     white-space: pre-wrap;
     word-break: break-word;
     text-align: left;
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     line-height: normal;
     color: inherit;
@@ -11741,7 +11742,7 @@ body.fm_window--no-scroll {
 
 .fm_window-content,
 .fm_window-content-without-header {
-    font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+    font-family: Battambang,Roboto, Arial, Tahoma, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: rgba(0, 0, 0, .5);
