@@ -1128,7 +1128,7 @@ Filemanager.prototype = {
 $.fn.filemanager = function (opts) {
     var filemanager;
     var $modal = $(`<div id="filemanager-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-xl" role="document">
+                <div class="modal-dialog modal-dialog-centered modal-lg modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
                             <div id="filemanager"></div>
