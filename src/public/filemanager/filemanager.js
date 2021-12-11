@@ -1126,8 +1126,9 @@ Filemanager.prototype = {
 }
 
 $.fn.filemanager = function (opts) {
-    var filemanager;
-    var $modal = $(`<div id="filemanager-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    $(this).each(function () {
+        var filemanager;
+        var $modal = $(`<div id="filemanager-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
@@ -1139,58 +1140,59 @@ $.fn.filemanager = function (opts) {
                     </div>
                 </div>
         </div>`);
-    var options = {
-        callback: data => {
-            if (Object.values(data).length) {
-                $modal.find('.modal-footer #submit').removeClass('d-none');
-            } else {
-                $modal.find('.modal-footer #submit').addClass('d-none');
-            }
+        var options = {
+            callback: data => {
+                if (Object.values(data).length) {
+                    $modal.find('.modal-footer #submit').removeClass('d-none');
+                } else {
+                    $modal.find('.modal-footer #submit').addClass('d-none');
+                }
 
-        },
-        template: data => {
-            //multiple
-            var $t = $(`<div class="border m-1" style="width:120px;height:120px;float:left;position: relative;">
+            },
+            template: data => {
+                //multiple
+                var $t = $(`<div class="border m-1" style="width:120px;height:120px;float:left;position: relative;">
                 <i id="del" class="fas fa-times fa-z position-absolute text-danger p-1" style=" z-index: 1; right: 0;"></i>
                 <input type="hidden" class="form-control" name="${options.input_name}" value="${data.path}">
                 <img width="100%" height="100%" src="${data.path}" style="object-fit: contain">
                 </div>`);
-            $t.find('#del').click(() => {
-                $t.remove();
-            });
-            var target = $(this).data('target');
-            $(target).append($t);
+                $t.find('#del').click(() => {
+                    $t.remove();
+                });
+                var target = $(this).data('target');
+                $(target).append($t);
+            }
         }
-    }
-    $.extend(options, opts);
-    filemanager = new Filemanager($modal.find(`#filemanager`), options);
+        $.extend(options, opts);
+        filemanager = new Filemanager($modal.find(`#filemanager`), options);
 
-    $modal.find('.modal-footer #submit').click((e) => {
+        $modal.find('.modal-footer #submit').click((e) => {
 
-        $modal.modal('hide');
-        $.each(Object.values(filemanager.items_selected), (i, data) => {
-            if (data.type == 'file') {
-                //One
-                var input = $(this).data('target-input');
-                var image = $(this).data('target-image');
-                $(input).val(data.path);
+            $modal.modal('hide');
+            $.each(Object.values(filemanager.items_selected), (i, data) => {
+                if (data.type == 'file') {
+                    //One
+                    var input = $(this).data('target-input');
+                    var image = $(this).data('target-image');
+                    $(input).val(data.path);
 
-                if (data.extension == 'image') {
-                    $(image).attr('src', `${data.path}`);
+                    if (data.extension == 'image') {
+                        $(image).attr('src', `${data.path}`);
+                    }
+
+                    options.template(data);
                 }
 
-                options.template(data);
-            }
 
 
-
+            });
+            filemanager.items_selected = {};
         });
-        filemanager.items_selected = {};
+        $(this).click(e => {
+            e.preventDefault();
+            $modal.modal();
+            filemanager.init();
+        });
+        return filemanager;
     });
-    $(this).click(e => {
-        e.preventDefault();
-        $modal.modal();
-        filemanager.init();
-    });
-    return filemanager;
 }
