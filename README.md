@@ -13,7 +13,6 @@
     - FILEMANAGER_URL=filemanager
 
 -   Edit web.php
-
     - use Semkeamsan\LaravelFilemanager\Filemanager;
 
         Route::group(['prefix' => '','middleware' => ['auth'] ], function () {

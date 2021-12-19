@@ -76,7 +76,6 @@ class Filemanager extends Model
 
     public static function routes()
     {
-        dd(config());
             Route::get(config('semkeamsan.laravel-filemanager.route.url'), '\\Semkeamsan\\LaravelFilemanager\\FilemanagerController@index');
             Route::get(config('semkeamsan.laravel-filemanager.route.url') . '/demo', '\\Semkeamsan\\LaravelFilemanager\\FilemanagerController@demo');
             Route::prefix('api')->group(function () {
