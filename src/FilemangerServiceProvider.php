@@ -32,7 +32,7 @@ class FilemangerServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/public' => public_path('vendor/' . $this->path ),
-        ],  $this->path . '-public');
+        ],  $this->path . '-asset');
         $this->publishes([
             __DIR__ . '/views' => base_path('resources/views/vendor/semkeamsan/filemanager'),
         ],  $this->path . '-view');

@@ -20,7 +20,7 @@ class FilemanagerController extends Controller
      */
     public $root = 'public/';
 
-    public function index()
+    public function index(Request $request)
     {
         return view('semkeamsan/laravel-filemanager::index');
     }
@@ -30,7 +30,15 @@ class FilemanagerController extends Controller
     }
     public function all()
     {
+
+
+
         return Filemanager::withCount(['files'])->with(['parent'])->whereNull('parent_id')->where(function ($table) {
+
+            if(config('semkeamsan.laravel-filemanager.roles') && !in_array(request()->user()->role_id,config('semkeamsan.laravel-filemanager.roles',[])) ){
+                $table->where('user_id',request()->user()->id);
+            }
+
             $table->when(request('extension'), function ($t) {
                 $t->where('extension', request('extension'));
             });
@@ -50,6 +58,10 @@ class FilemanagerController extends Controller
                 'id' => '',
                 'name' => trans('semkeamsan/laravel-filemanager::langauages.All'),
                 'children' =>  Filemanager::where('type', 'folder')->whereNull('parent_id')->get()->map(function ($row) {
+                    if(config('semkeamsan.laravel-filemanager.roles') && !in_array(request()->user()->role_id,config('semkeamsan.laravel-filemanager.roles',[])) ){
+                        $row->where('user_id',request()->user()->id);
+                    }
+
                     $row->children = $row->childrens()->map(function ($children) {
                         $children->path = $children->path();
                     });
@@ -64,6 +76,11 @@ class FilemanagerController extends Controller
         return  Filemanager::withCount(['files'])->whereHas('parent', function ($parent) use ($id) {
             $parent->where('id', $id);
         })->where(function ($table) {
+            if(config('semkeamsan.laravel-filemanager.roles') && !in_array(request()->user()->role_id,config('semkeamsan.laravel-filemanager.roles',[])) ){
+                $table->where('user_id',request()->user()->id);
+            }
+
+
             $table->when(request('extension'), function ($t) {
                 $t->where('extension', request('extension'));
             });
@@ -94,6 +111,8 @@ class FilemanagerController extends Controller
      */
     public function store(Request $request)
     {
+
+        request()->merge(['user_id' => auth()->id() ]);
 
         $folder = '';
         $slug = Str::random(20);
@@ -133,6 +152,7 @@ class FilemanagerController extends Controller
     public function upload(Request $request)
     {
 
+
         $folder = '';
         if ($request->parent_id) {
             $filemanager =  Filemanager::find($request->parent_id);
@@ -154,6 +174,7 @@ class FilemanagerController extends Controller
                     'extension' => $this->types($name),
                     'mime' => $file->getMimeType(),
                     'size' => $file->getSize(),
+                    'user_id' => auth()->id()
                 ]);
                 $f->path = Storage::url(rtrim($f->path(), '/'));
                 $filemanagers->add($f);

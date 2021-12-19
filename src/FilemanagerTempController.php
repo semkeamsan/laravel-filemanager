@@ -27,6 +27,7 @@ class FilemanagerTempController extends Controller
     }
     public function store(Request $request)
     {
+
         $filemanagers = collect();
         $folder = '';
         if ($request->parent_id) {
@@ -46,6 +47,7 @@ class FilemanagerTempController extends Controller
                 $file['slug'] = $slug;
                 $file['parent_id'] = $request->parent_id;
                 $file['type'] = $request->type;
+                $file['user_id'] = auth()->id();
                 $f =   Filemanager::create($file);
                 $f->path = Storage::url(rtrim($f->path(), '/'));
                 $filemanagers->add($f);
