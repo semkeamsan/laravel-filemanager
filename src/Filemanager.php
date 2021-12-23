@@ -23,7 +23,7 @@ class Filemanager extends Model
     {
         $path = '';
         foreach ($this->parents() as $key => $parent) {
-            $path .= $parent->name . '/';
+            $path .= $parent->slug . '/';
         }
         return $path;
     }

@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Mockery\Expectation;
 
 class FilemanagerController extends Controller
 {
@@ -116,7 +117,7 @@ class FilemanagerController extends Controller
 
         $folder = '';
         $slug = Str::random(20);
-        $name = $request->name;
+        $name = $slug;
         $parent = null;
         if ($request->parent_id) {
             $filemanager = $parent =  Filemanager::with(['parent'])->find($request->parent_id);
@@ -129,18 +130,19 @@ class FilemanagerController extends Controller
         if ($request->type == 'folder') {
             Storage::makeDirectory($this->root . $folder . $name);
         } elseif ($request->type == 'file') {
+            $name = $slug .'.'.pathinfo( $request->name, PATHINFO_EXTENSION);
             Storage::put($this->root . $folder . $name, '');
         }
 
         $request->merge([
-            'slug' => $slug,
+            'slug' => $name,
             'extension' => request('extension', $this->types($name)),
         ]);
         if ($request->parent_id) {
-            if (Filemanager::where('parent_id', $request->parent_id)->where('type', $request->type)->where('name', $name)->count()) {
+            if (Filemanager::where('parent_id', $request->parent_id)->where('type', $request->type)->where('slug', $name)->count()) {
                 return;
             }
-        } elseif (Filemanager::whereNull('parent_id')->where('type', $request->type)->where('name', $name)->count()) {
+        } elseif (Filemanager::whereNull('parent_id')->where('type', $request->type)->where('slug', $name)->count()) {
             return;
         }
         $filemanager = Filemanager::create($request->all());
@@ -255,21 +257,27 @@ class FilemanagerController extends Controller
     {
 
         $filemanager = Filemanager::find($id);
-        $name = $request->name;
+        $name = $filemanager->slug;
         $folder = '';
         if ($filemanager->parent_id) {
             foreach ($filemanager->parents() as $key => $parent) {
                 if ($parent->id != $filemanager->id) {
-                    $folder .= $parent->name . '/';
+                    $folder .= $parent->slug . '/';
                 }
             }
         }
         if ($filemanager->type == 'file') {
             $request->merge([
-                'extension' => request('extension', $this->types($name)),
+                'extension' => request('extension', $this->types($request->name)),
             ]);
+            $name = pathinfo( $filemanager->slug, PATHINFO_FILENAME);
+            $name = $name .'.'.pathinfo($request->name, PATHINFO_EXTENSION);
+            $request->merge(['slug' =>$name ]);
+            if (!Storage::exists($this->root . $folder  . $name)) {
+                Storage::rename($this->root . $folder . $filemanager->slug, $this->root . $folder  . $name);
+            }
+
         }
-        Storage::rename($this->root . $folder . $filemanager->name, $this->root . $folder  . $name);
         $filemanager->update($request->all());
         $filemanager->path = Storage::url(rtrim($folder . $name, '/'));
 
@@ -296,12 +304,12 @@ class FilemanagerController extends Controller
                 if ($filemanager->parent_id) {
                     foreach ($filemanager->parents() as $key => $parent) {
                         if ($parent->id != $filemanager->id) {
-                            $folder .= $parent->name . '/';
+                            $folder .= $parent->slug . '/';
                         }
                     }
                 }
                 if ($filemanager->type == 'folder') {
-                    Storage::deleteDirectory($this->root . $folder . $filemanager->name);
+                    Storage::deleteDirectory($this->root . $folder . $filemanager->slug);
 
                     foreach ($filemanager->childrens() as $key => $child) {
                         foreach ($child->files as $key => $f) {
@@ -313,7 +321,7 @@ class FilemanagerController extends Controller
                         $child->delete();
                     }
                 }
-                Storage::delete($this->root . $folder . $filemanager->name);
+                Storage::delete($this->root . $folder . $filemanager->slug);
                 $deleted->add($filemanager);
                 $filemanager->delete();
             }

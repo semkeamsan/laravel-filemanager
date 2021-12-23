@@ -33,18 +33,19 @@ class FilemanagerTempController extends Controller
         if ($request->parent_id) {
             $filemanager =  Filemanager::find($request->parent_id);
             foreach ($filemanager->parents() as $key => $parent) {
-                $folder .= $parent->name . '/';
+                $folder .= $parent->slug . '/';
             }
         }
 
-        foreach ($request->allfiles as $key => $file) {
-            if (!Filemanager::where('parent_id', $request->parent_id)->where('type', $request->type)->where('name', $file['name'])->count()) {
-                $slug = Str::random(20);
-                if(!Storage::exists('public/' . $folder . $file['name'])){
-                    Storage::move($this->root . $file['name'], 'public/' . $folder . $file['name']);
+        foreach ($request->allfiles as $file) {
+            $slug = Str::random(20);
+                $name = $slug .'.'.pathinfo( $file['name'], PATHINFO_EXTENSION);
+            if (!Filemanager::where('parent_id', $request->parent_id)->where('type', $request->type)->where('slug', $name)->count()) {
+                if(!Storage::exists('public/' . $folder . $slug)){
+                    Storage::move($this->root . $file['name'], 'public/' . $folder . $name);
                 }
                 Storage::delete($this->root . $file['name']);
-                $file['slug'] = $slug;
+                $file['slug'] = $name;
                 $file['parent_id'] = $request->parent_id;
                 $file['type'] = $request->type;
                 $file['user_id'] = auth()->id();
