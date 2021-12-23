@@ -255,10 +255,6 @@ Filemanager.prototype = {
                 </div>
                 <div class="fm_card_image-wrapper">
                     <div class="fm_card_image-sizer">
-                        ${data.type == 'folder' ? `<div class="fm_grid-card__bg-icon fm_file-icon fm_file-icon--folder"></div>` :
-                        data.extension == 'image' ? `<img draggable="false" class="fm_card_image" src="${data.path}">` :
-                            `<div class="fm_grid-card__bg-icon fm_file-icon fm_file-icon--${data.extension}"></div>`
-                        }
 
                     </div>
                 </div>
@@ -267,6 +263,22 @@ Filemanager.prototype = {
                 </div>
             </div>
         </div>`);
+        switch (data.extension) {
+            case 'image':
+                $item.find(`.fm_card_image-sizer`).append(`<img draggable="false" class="fm_card_image" src="${data.path}">`);
+                break;
+            case 'video':
+                $item.find(`.fm_card_image-sizer`).append(`<div class="position-absolute top-1 left-1" style="z-index:1;color: var(--primary)"><i class="fa fa-file-video"></i></div><video draggable="false" class="fm_card_image" src="${data.path}">`);
+                break;
+            case 'folder':
+                $item.find(`.fm_card_image-sizer`).append(`<div class="fm_grid-card__bg-icon fm_file-icon fm_file-icon--folder"></div>`);
+                break;
+            default:
+                $item.find(`.fm_card_image-sizer`).append(`<div class="fm_grid-card__bg-icon fm_file-icon fm_file-icon--${data.extension}"></div>`);
+                break;
+        }
+
+
 
         $item.data('fm', data);
         this.events.select(this, $item);
@@ -308,11 +320,19 @@ Filemanager.prototype = {
 
     },
     information: function (data) {
-        if (data.extension == 'image') {
-            this.$right.find(`.fm_layout-cell-content`).html(`<img draggable="false" class="fm_tabbar__image" src=" ${data.path}">`);
-        } else {
-            this.$right.find(`.fm_layout-cell-content`).html(`<div class="fm_tabbar__bg-icon fm_file-icon fm_file-icon--${data.extension}"></div>`);
+        switch (data.extension) {
+            case 'image':
+                this.$right.find(`.fm_layout-cell-content`).html(`<img draggable="false" class="fm_tabbar__image" src=" ${data.path}">`);
+                break;
+            case 'video':
+                this.$right.find(`.fm_layout-cell-content`).html(`<video controls draggable="false" class="w-100" src="${data.path}">`);
+                break;
+            default:
+                this.$right.find(`.fm_layout-cell-content`).html(`<div class="fm_tabbar__bg-icon fm_file-icon fm_file-icon--${data.extension}"></div>`);
+                break;
         }
+
+
 
         this.$right.find(`.fm_layout-cell-content`).append(`
                     <div aria-label="tab-content-information" class="fm_layout-cell">
