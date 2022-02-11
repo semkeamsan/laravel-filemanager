@@ -49,9 +49,8 @@ class FilemangerServiceProvider extends ServiceProvider
 
         $style = '<link href="' . asset('vendor/' . $this->path . '/filemanager/filemanager.css') . '" rel="stylesheet">';
         $script =  '<script src="' . asset('vendor/' . $this->path . '/filemanager/filemanager.js') . '"></script>';
-        if (app()->getLocale() != 'en') {
-            $script .= '<script src="' . asset('vendor/' . $this->path . '/filemanager/locales/' . app()->getLocale() . '.js') . '"></script>';
-        }
+        $scriptLang = '<script src="' . asset('vendor/' . $this->path . '/filemanager/locales/' . app()->getLocale() . '.js') . '"></script>';
+
 
         Blade::directive('filemanagerStyle', function () use ($style) {
             return $style;
@@ -62,7 +61,9 @@ class FilemangerServiceProvider extends ServiceProvider
         Blade::directive('filemanagerAssets', function () use ($style, $script) {
             return $style . $script;
         });
-
+        Blade::directive('filemanagerScriptLang', function () use ($scriptLang) {
+            return $scriptLang;
+        });
     }
 
 }
